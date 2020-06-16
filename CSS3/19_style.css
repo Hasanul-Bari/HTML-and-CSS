@@ -1,0 +1,49 @@
+.green_box{
+	width: 600px;
+	height: 350px;
+	background: green;
+
+	position: relative;
+	
+}
+
+.red_box{
+	width: 180px;
+	height: 180px;
+	background: red;
+
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	margin: auto;
+
+	position: absolute;
+
+	border-radius: 50%;
+}
+
+.c1{
+	background: red;
+
+	margin-top: 10px;
+	padding: 5px;
+
+	position: sticky;
+	top: 0;
+}
+
+p{
+	padding-bottom: 1000px; 
+}
+
+.c2{
+	position: fixed;
+	bottom: 0;
+	right: 0;
+
+	border: 2px solid aqua;
+	padding: 3px;
+
+}
+

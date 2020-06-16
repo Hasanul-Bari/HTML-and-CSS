@@ -1,0 +1,19 @@
+/*div p{
+	background: yellow;
+}*/
+
+/*div > p{
+	background: yellow;
+}*/
+
+/*div + p{
+	background: yellow;
+}*/
+/*immedite porei je p tag thakbe tar jnno*/
+
+
+
+div ~ p{
+	background: yellow;
+}
+/*div er porer sob p tag er jnno

@@ -1,0 +1,12 @@
+a:hover{
+	color: red;
+}
+
+h2:nth-child(3){
+	color: aqua;
+}
+
+/*h2:first-child{
+	color: red;
+}*/
+

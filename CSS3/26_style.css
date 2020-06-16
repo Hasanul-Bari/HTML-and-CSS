@@ -1,0 +1,25 @@
+img{
+	width: 400px;
+}
+
+img:hover{
+	opacity: 0.6;
+}
+/*value 0 theke 1 er modhe*/
+
+
+.bg{
+	width: 400px;
+	height: 350px;
+	background: url('IMG_1975.jpg') no-repeat;
+	overflow: hidden;
+}
+
+.box p{
+	text-align: center;
+	background: white;
+	padding: 30px;
+	opacity: 0.5;
+	margin-top: 30px;
+
+}

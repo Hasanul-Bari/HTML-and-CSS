@@ -1,0 +1,13 @@
+p{
+	border: 1px solid;
+	margin: 50px;
+
+
+	outline-width: 5px/*thin thick medium*/;
+	outline-style: double;
+	outline-color: orange;
+
+	/*outline: 5px solid orange;*/
+
+	outline-offset: 30px;
+}

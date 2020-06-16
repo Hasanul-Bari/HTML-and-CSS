@@ -1,0 +1,29 @@
+body{
+	margin: 0;
+	padding: 0;
+}
+
+.box{
+	width: 100px;
+	height: 100px;
+	background: red;
+	border: 2px solid grey;
+	padding: 10px;
+	font-size: 20px;
+
+	margin: 100px auto;
+
+	/*transform: translate(0px, 200px)*/
+
+	/*transform: rotate(30deg);*/
+
+	/*transform: scale(0.5);*/
+
+	/*transform: scale(3,2);*/
+
+	transform: skew(30deg,10deg);
+
+
+
+
+}

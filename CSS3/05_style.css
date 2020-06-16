@@ -1,0 +1,13 @@
+.hasan{
+	border-width: 5px 10px 20px 30px;
+	border-style: dotted solid dashed ridge/*dotted ridge inset dashed none*/;
+	border-color: green red blue yellow;
+	border-radius: 10px;
+}
+
+/*.hasan{
+	border: 5px solid red;
+	border-radius: 10px;
+}*/
+
+

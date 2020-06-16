@@ -1,0 +1,16 @@
+/*p::first-letter{
+	color: red;
+	font-size: 100px;
+}*/
+
+p::first-line{
+	color: red;
+}
+
+h2::before{
+	content: url('star.png');
+}
+
+h2::after{
+	content: ' Hasan';
+}

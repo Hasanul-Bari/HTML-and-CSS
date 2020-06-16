@@ -1,0 +1,26 @@
+.flex-container{
+	display: flex;
+	/*flex-direction: column;*/
+
+	flex-wrap: wrap;
+
+	justify-content: center ;
+
+	/*height: 600px;
+	align-items: center;*/
+
+
+	background: red;
+	padding: 10px;
+
+}
+
+.flex-item{
+	border: 1px solid grey;
+	font-size: 30px;
+	padding: 20px;
+	color: white;
+	margin: 10px;
+
+	width: 100px;
+}

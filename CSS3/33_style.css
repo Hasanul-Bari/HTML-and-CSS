@@ -1,0 +1,17 @@
+.box{
+	width: 100px;
+	height: 100px;
+	background: lime;
+
+	transition: width 4s, height 4s,transform 4s;
+	/*transition-delay: 2s;*/
+	transition-timing-function: ease-in-out;
+
+
+}
+
+.box:hover{
+	width: 400px;
+	height: 400px;
+	transform: rotate(180deg);
+}
