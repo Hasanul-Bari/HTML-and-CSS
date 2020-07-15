@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded",
             function (request) {
               var name = request.responseText;
 
+              console.log(name);
+
               document.querySelector("#content")
                 .innerHTML = "<h2>Hello " + name + "!</h2>";
             });
