@@ -171,7 +171,7 @@ function buildAndShowMenuItemsHTML (categoryMenuItems) {
         menuItemHtml,
         function (menuItemHtml) {
           // Switch CSS class active to menu button
-          switchMenuToActive();
+          //switchMenuToActive();
 
           var menuItemsViewHtml =
             buildMenuItemsViewHtml(categoryMenuItems,
