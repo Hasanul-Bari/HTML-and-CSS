@@ -19,8 +19,6 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
   });
 });
 
-
-
 (function (global) {
 
 var dc = {};
@@ -30,14 +28,10 @@ var allCategoriesUrl =
   "https://davids-restaurant.herokuapp.com/categories.json";
 var categoriesTitleHtml = "snippets/categories-title-snippet.html";
 var categoryHtml = "snippets/category-snippet.html";
-
 var menuItemsUrl =
   "https://davids-restaurant.herokuapp.com/menu_items.json?category=";
 var menuItemsTitleHtml = "snippets/menu-items-title.html";
 var menuItemHtml = "snippets/menu-item.html";
-
-
-
 
 // Convenience function for inserting innerHTML for 'select'
 var insertHtml = function (selector, html) {
@@ -61,6 +55,20 @@ var insertProperty = function (string, propName, propValue) {
   return string;
 }
 
+// Remove the class 'active' from home and switch to Menu button
+var switchMenuToActive = function () {
+  // Remove 'active' from home button
+  var classes = document.querySelector("#navHomeButton").className;
+  classes = classes.replace(new RegExp("active", "g"), "");
+  document.querySelector("#navHomeButton").className = classes;
+
+  // Add 'active' to menu button if not already there
+  classes = document.querySelector("#navMenuButton").className;
+  if (classes.indexOf("active") == -1) {
+    classes += " active";
+    document.querySelector("#navMenuButton").className = classes;
+  }
+};
 
 // On page load (before images or CSS)
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -76,9 +84,6 @@ $ajaxUtils.sendGetRequest(
   false);
 });
 
-
-
-
 // Load the menu categories view
 dc.loadMenuCategories = function () {
   showLoading("#main-content");
@@ -86,6 +91,7 @@ dc.loadMenuCategories = function () {
     allCategoriesUrl,
     buildAndShowCategoriesHTML);
 };
+
 
 // Load the menu items view
 // 'categoryShort' is a short_name for a category
@@ -108,6 +114,9 @@ function buildAndShowCategoriesHTML (categories) {
       $ajaxUtils.sendGetRequest(
         categoryHtml,
         function (categoryHtml) {
+          // Switch CSS class active to menu button
+          switchMenuToActive();
+
           var categoriesViewHtml =
             buildCategoriesViewHtml(categories,
                                     categoriesTitleHtml,
@@ -149,6 +158,7 @@ function buildCategoriesViewHtml(categories,
 }
 
 
+
 // Builds HTML for the single category page based on the data
 // from the server
 function buildAndShowMenuItemsHTML (categoryMenuItems) {
@@ -160,6 +170,9 @@ function buildAndShowMenuItemsHTML (categoryMenuItems) {
       $ajaxUtils.sendGetRequest(
         menuItemHtml,
         function (menuItemHtml) {
+          // Switch CSS class active to menu button
+          switchMenuToActive();
+
           var menuItemsViewHtml =
             buildMenuItemsViewHtml(categoryMenuItems,
                                    menuItemsTitleHtml,
