@@ -1,0 +1,22 @@
+ul{
+    list-style: none;
+    background-color: aqua;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+li{
+    float: left;
+    background-color: gray;
+    padding: 10px;
+    
+}
+li:hover{
+    background-color: indigo;
+}
+
+li a{
+    text-decoration: none;
+    color: #fcac00;
+}
