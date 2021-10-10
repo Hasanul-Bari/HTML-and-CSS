@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="form_validate.css">
+
+    <title>Form Validation</title>
+  </head>
+
+  <body>
+
+    <form action="index.html" method="post">
+
+      <p>
+        Name :
+        <input id="userid" type="text" name="user" size="50px">
+        <span id="userError"></span>
+      </p>
+
+      <p>
+        Email :
+        <input id="emailid" type="email" name="user" size="50px">
+        <span id="emailError"></span>
+      </p>
+
+      <p>
+        Password :
+        <input id="pw1id" type="password" name="user" size="50px">
+        <span id="pw1Error"></span>
+      </p>
+
+      <p>
+        Confirm Password :
+        <input id="pw2id" type="password" name="user" size="50px">
+        <span id="pw2Error"></span>
+      </p>
+
+      <p>
+        Age :
+        <input id="ageid" type="text" name="age" size="50px">
+        <span id="ageError"></span>
+      </p>
+
+      <input type="submit" onclick="return validate()"  value="Sign Up">
+
+    </form>
+
+
+
+    <script type="text/javascript">
+
+        function validate(){
+
+          var user=document.getElementById("userid").value.trim();
+          var email=document.getElementById("emailid").value.trim();
+          var pw1=document.getElementById("pw1id").value.trim();
+          var pw2=document.getElementById("pw2id").value.trim();
+          var age=document.getElementById("ageid").value.trim();
+
+
+
+          //name validation------------------------------------------------------------------------------
+          if(user.length==0){
+
+            var userErr="This field can't be empty";
+            document.getElementById('userError').innerHTML = userErr;
+            return false;
+          }
+          else if(user.length<6){
+
+            var userErr="Name must be of atleast length 6";
+            document.getElementById('userError').innerHTML = userErr;
+            return false;
+          }
+          else {
+            document.getElementById('userError').innerHTML = "";
+          }
+
+
+          //email Validation-----------------------------------------------------------------------
+
+          var atindex=-1;
+          var dotindex=-1;
+
+          var f=true;
+
+          for(var i=0; i<email.length; i++){
+
+              if(email[i]=='@' &&  atindex==-1){
+                atindex=i;
+              }else if(email[i]=='@'){
+                f=false;
+                break;
+              }
+
+              if(email[i]=='.' &&  dotindex==-1){
+                dotindex=i;
+              }else if(email[i]=='.') {
+                f=false;
+                break;
+              }
+          }
+
+          if(email.length==0){
+            document.getElementById('emailError').innerHTML = "This field can't be empty";
+            return false;
+          }
+          else if(f==false || atindex==0 || dotindex-atindex<=1 || email.length-dotindex<=2){
+            console.log(atindex);
+            document.getElementById('emailError').innerHTML = "Invalid Email";
+            return false;
+          }
+          else {
+            document.getElementById('emailError').innerHTML = "";
+          }
+
+
+
+
+
+          //password1 validation------------------------------------------------------------------------
+          if(pw1.length==0){
+
+            var pw1Err="This field can't be empty";
+            document.getElementById('pw1Error').innerHTML = pw1Err;
+            return false;
+          }
+          else if(pw1.length<6){
+
+            var pw1Err="Password must be of atleast length 6";
+            document.getElementById('pw1Error').innerHTML = pw1Err;
+            return false;
+          }
+          else {
+            document.getElementById('pw1Error').innerHTML = "";
+          }
+
+
+          //password2 validation-------------------------------------------------------------------
+          if(pw2.length==0){
+
+            var pw2Err="This field can't be empty";
+            document.getElementById('pw2Error').innerHTML = pw2Err;
+            return false;
+          }
+          else if(pw1!=pw2){
+
+            var pw2Err="Passwords did not matched";
+            document.getElementById('pw2Error').innerHTML = pw2Err;
+            return false;
+          }
+          else {
+            document.getElementById('pw2Error').innerHTML = "";
+          }
+
+
+
+          //Age Validation
+          ageInt=Number(age);
+          if(age.length==0){
+
+            document.getElementById('ageError').innerHTML = "This field can't be empty";
+            return false;
+          }
+          else if(isNaN(ageInt)){
+            document.getElementById('ageError').innerHTML = "Enter a number(age)";
+            return false;
+          }
+          else if(ageInt<18){
+            document.getElementById('ageError').innerHTML = "Age must be atleat 18";
+            return false;
+          }
+          else{
+            document.getElementById('ageError').innerHTML = "";
+
+          }
+
+
+
+
+
+
+
+          console.log(user+" "+email+" "+pw1+" "+pw2+" "+isNaN(age));
+
+          return true;
+        }
+
+
+    </script>
+
+
+  </body>
+
+
+
+
+
+
+</html>
