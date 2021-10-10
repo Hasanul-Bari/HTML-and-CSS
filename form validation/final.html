@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Xm</title>
+</head>
+<body>
+
+    <form action=""> 
+
+        <p>
+            <input type="email" name="email" id="em">
+            <span id="eMsg" style="color:red;"></span>
+        </p>
+    
+        <input type="submit" value="SignIn" onclick="return validate()">
+    
+    
+    </form>
+    
+    <script type="text/javascript">
+
+        function validate(){
+            
+            var email= document.getElementById("em").value.trim();
+
+            console.log(email);
+
+            var parts= email.split("@");
+
+
+            if(parts.length !==2){
+
+                display("Email must have one @")
+                return false;
+            }
+
+            var found=false;
+            for(var i=0; i<parts[1].length; i++){
+                
+                if(i+3<parts[1].length && parts[1][i]=='h' && parts[1][i+1]=='s' && parts[1][i+2]=='t' && parts[1][i+3]=='u'){
+
+                    found=true;
+                    break;
+                }
+
+            }
+
+            if(found==false){
+                display("Domain name must contain hstu");
+            }
+            
+            return found;
+        }
+
+        function display(msg){
+            document.getElementById("eMsg").innerHTML=msg;
+        }
+
+
+    </script>
+    
+</body>
+</html>
