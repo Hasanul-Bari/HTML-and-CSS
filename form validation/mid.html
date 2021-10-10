@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Form Validation</title>
+    <style>
+        span{
+          color:red;
+        }
+    </style>
+  </head>
+
+  <body>
+
+    <form action="mid.html" method="post">
+
+      <p>
+        Name :
+        <input id="uid" type="text" name="user" onchange="validate()">
+        <span id="ne"></span>
+      </p>
+
+      <p>
+        Password :
+        <input id="pid" type="password" name="pw" onchange="validate()">
+        <span id="pe"></span>
+      </p>
+
+
+      <p>
+        Age :
+        <input id="aid" type="text" name="age" onchange="validate()">
+        <span id="ae"></span>
+      </p>
+
+
+      <input type="submit" onclick="return validate()"  value="Sign Up">
+
+    </form>
+
+
+  <script type="text/javascript">
+
+    function validate(){
+
+        var nm=document.getElementById("uid").value.trim();
+        var pw=document.getElementById("pid").value.trim();
+        var age=document.getElementById("aid").value.trim();
+
+        var f1=false, f2=false, f3=false;
+
+
+        //console.log(nm+" "+pw+" "+age);
+        //console.log(nm.length+" "+pw.length+" "+em.length+" "+age.length);
+
+
+        //---------------------------name validation----------------------------------------
+
+        if(nm.length==0){
+          display_error("ne","This field can't be empty");
+        }
+        else{
+          display_error("ne","");
+          f1=true;
+        }
+
+
+        //---------------------------password validation-------------------------------------
+
+        if(pw.length==0){
+          display_error("pe","This field can't be empty");
+        }
+        else if(pw.length<10){
+          display_error("pe","Password should be atleast 10 characters in length");
+        }
+        else{
+          var c=false;
+          var d=false;
+          for(var i=0; i<pw.length; i++){
+
+              if(pw[i]>='A' && pw[i]<='Z'){
+                c=true;
+              }
+              if(pw[i]>='0' && pw[i]<='9'){
+                d=true;
+              }
+          }
+
+          if(c==false || d==false){
+            display_error("pe","Password should contain atleast one digit and one capital letter");
+          }
+          else{
+            display_error("pe","");
+            f2=true;
+          }
+        }
+
+
+
+
+        //------------------------------------------------age validate------------------------------------------------
+        if(age.length==0){
+          display_error("ae","This field can't be empty");
+        }
+        else if(isNaN(age)){
+          display_error("ae","Age should be a number");
+        }
+        else if(age>=25){
+          display_error("ae","Age should be less then 25");
+        }
+        else if(age<=0){
+          display_error("ae","Age can't be zero or negative");
+        }
+        else{
+          display_error("ae","");
+          f3=true;
+        }
+
+
+        if(f1==true && f2==true && f3==true){
+            return true;
+        }
+        else{
+          return false;
+        }
+
+    }
+
+    function display_error(id,msg) {
+        document.getElementById(id).innerHTML=msg;
+    }
+
+  </script>
+
+  </body>
+</html>
