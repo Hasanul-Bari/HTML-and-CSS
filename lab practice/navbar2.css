@@ -1,0 +1,52 @@
+.mynav{
+    background-color: black;
+    overflow: hidden;
+    
+   
+}
+
+.mynav a{
+    float: left;
+    padding: 20px;
+    text-decoration: none;
+    color: white;
+}
+.mynav a:hover{
+    background-color: darkslategrey;
+}
+
+.dropdown{
+    float: left;
+    overflow: hidden;
+}
+
+.dropbtn{
+    background-color: black;
+    color: white;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 20px;
+
+}
+.dropbtn:hover{
+    background-color: darkslategrey;
+}
+
+
+/* dropdown content */
+.dropdown-content{
+    display: none;
+    position: absolute;
+}
+
+.dropdown-content a{
+    float: none;
+    display: block;
+    color: black;
+    background-color: cadetblue;
+}
+
+.dropdown:hover .dropdown-content{
+    display: block;
+}
