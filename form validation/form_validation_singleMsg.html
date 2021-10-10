@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Form Validation</title>
+  </head>
+
+  <body>
+
+    <form action="" method="post">
+
+      <p>
+        Name :
+        <input id="uid" type="text" name="user">
+      </p>
+
+      <p>
+        Email :
+        <input id="eid" type="email" name="em">
+      </p>
+
+      <p>
+        Password :
+        <input id="pid" type="password" name="pw">
+      </p>
+
+
+      <p>
+        Age :
+        <input id="aid" type="text" name="age">
+      </p>
+
+
+      <p>
+        <span id="error" style="color:red"></span>
+      </p>
+
+      <input type="submit" onclick="return validate()"  value="Sign Up">
+
+    </form>
+
+
+  <script type="text/javascript">
+
+    function validate(){
+
+      var nm=document.getElementById("uid").value.trim();
+      var pw=document.getElementById("pid").value.trim();
+      var age=document.getElementById("aid").value.trim();
+
+      var em=document.getElementById("eid").value.trim();
+
+      var emsg=false;
+
+      //console.log(nm+" "+pw+" "+em+" "+age);
+      //console.log(nm.length+" "+pw.length+" "+em.length+" "+age.length);
+
+
+      if(nm.length==0 || pw.length==0 || em.length==0 || age.length==0){
+          emsg="Field can't be empty"
+      }
+      else if(pw.length<10){
+            emsg="Password should be atleast 10 characters in length";
+      }
+      else if(!emsg){
+        var c=false;
+        var d=false;
+        for(var i=0; i<pw.length; i++){
+
+            if(pw[i]>='A' && pw[i]<='Z'){
+              c=true;
+            }
+            if(pw[i]>='0' && pw[i]<='9'){
+              d=true;
+            }
+        }
+
+        if(c==false || d==false){
+            emsg="Password should contain atleast one digit and one capital letter";
+        }
+      }
+      //------------------------------------------------age validate------------------------------------------------
+      if(!emsg){
+        if(isNaN(age)){
+          emsg="Age should be a number";
+        }
+        else if(age>=25){
+          emsg="Age should be less then 25";
+        }
+        else if(age<=0){
+          emsg="Age can't be zero or negative";
+        }
+
+      }
+      //------------------------------------------------email validate------------------------------------------------
+      if(!emsg){
+
+        var arr=em.split("@");
+        var f=true;
+
+        if(arr.length==2){
+
+            var info=arr[0].split(".");
+            var domain=arr[1].split(".");
+
+            for(var i=0; i<info.length; i++){
+
+              if(info[i].length<2){
+                f=false;
+                break;
+              }
+            }
+
+            for(var i=0; i<domain.length; i++){
+
+              if(domain[i].length<2){
+                f=false;
+                break;
+              }
+            }
+
+            if(domain.length==1){
+              f=false;
+            }
+
+
+        }
+        else{
+          f=false;
+        }
+
+        if(f==false){
+          emsg="Invalid Email";
+        }
+      }
+
+
+
+
+
+      if(emsg){
+        document.getElementById('error').innerHTML = emsg;
+        return false;
+      }else {
+        return true;
+      }
+
+    }
+
+  </script>
+
+  </body>
+</html>
